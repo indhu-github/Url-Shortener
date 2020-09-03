@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+
+    <title>Url Shortener</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Shorten the Url</h1>
+      <form action="/shortUrls" method="POST" class="my-4 form-inline">
+        <label for="fullUrl" class="sr-only">Url</label>
+        <input
+          type="url"
+          class="form-control col mr-2"
+          required
+          placeholder="url"
+          name="fullUrl"
+          id="fullUrl"
+        />
+        <button class="btn btn-success" type="submit">Shorten</button>
+      </form>
+      <table class="table table-responsive table-striped">
+        <thead>
+          <tr>
+            <th>Full Url</th>
+            <th>Short Url</th>
+            <th>Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% shortUrls.forEach(shortUrl => {%>
+          <tr>
+            <td>
+              <a href="<%=shortUrl.full%>"><%=shortUrl.full%></a>
+            </td>
+            <td>
+              <a href="<%=shortUrl.short%>"><%=shortUrl.short%></a>
+            </td>
+            <td><%=shortUrl.clicks %></td>
+          </tr>
+
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
